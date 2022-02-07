@@ -8,7 +8,7 @@
 <body>
   
   <button id="startButton" onmousedown="start()"> Press to Continue</button>
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><button id="button" class="hidden" onmouseover="move() ">Click for free bobux</button></a>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><button id="button" class="hidden" onmouseover="move()">Click for free bobux</button></a>
   <h1 id="bobux" class="hidden" ></h1>
   <script>
     const audio = new Audio('bruh.mp3');
@@ -17,14 +17,14 @@
     let header = document.getElementById('bobux');
     var rngText = 0;
     function start() {
-      
-      button.classList.remove('hidden');
       startButton.classList.add('hidden');
+      setTimeout(function(){
+        button.classList.remove('hidden');
+      }, 5);
       rngText = Math.floor(Math.random() * (6-1) + 1);
     }
 
     function move() {
-      rngText = 5;
       if (rngText == 1) {
         header.textContent = "lol get trolled";
       } else if (rngText == 2) {
@@ -36,7 +36,8 @@
       } else {
         header.textContent = "Amogus"
         document.body.classList.add('amogus')
-        header.style.borderBlock = "solid";
+        header.style.borderStyle = "solid";
+        button.style.display= "none";
       }
 
       header.classList.remove('hidden')
@@ -45,7 +46,8 @@
         header.classList.add('hidden');
         rngText = Math.floor(Math.random() * (6-1) + 1);
         document.body.classList.remove('amogus')
-        header.style.borderBlock = "none";
+        header.style.borderStyle = "none";
+        button.style.display = "block";
       },500);
 
       audio.pause;
