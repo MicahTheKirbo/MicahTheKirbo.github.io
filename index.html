@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+  
+  <button id="startButton" onmousedown="start()"> Press to Continue</button>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><button id="button" class="hidden" onmouseover="move() ">Click for free bobux</button></a>
+  <h1 id="bobux" class="hidden" ></h1>
+  <script>
+    const audio = new Audio('bruh.mp3');
+    let startButton = document.getElementById('startButton');
+    let button = document.getElementById('button');
+    let header = document.getElementById('bobux');
+    var rngText = 0;
+    function start() {
+      
+      button.classList.remove('hidden');
+      startButton.classList.add('hidden');
+      rngText = Math.floor(Math.random() * (6-1) + 1);
+    }
+
+    function move() {
+      rngText = 5;
+      if (rngText == 1) {
+        header.textContent = "lol get trolled";
+      } else if (rngText == 2) {
+        header.textContent = "no bobux for you XD";
+      } else if (rngText == 3) {
+        header.textContent = "Imagine being poor";
+      } else if (rngText == 4) {
+        header.textContent = "Imagine playing Roblox tho"
+      } else {
+        header.textContent = "Amogus"
+        document.body.classList.add('amogus')
+        header.style.borderBlock = "solid";
+      }
+
+      header.classList.remove('hidden')
+
+      setTimeout(function(){
+        header.classList.add('hidden');
+        rngText = Math.floor(Math.random() * (6-1) + 1);
+        document.body.classList.remove('amogus')
+        header.style.borderBlock = "none";
+      },500);
+
+      audio.pause;
+      audio.currentTime = 0;
+      button.style.top = Math.floor(Math.random() * (100 - 1) + 1) + "vh";
+      button.style.left = Math.floor(Math.random() * (100 - 1) + 1) + "vw";
+      audio.play();
+    }
+
+
+  </script>
+</body>
+
+</html>
