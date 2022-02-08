@@ -28,8 +28,7 @@
     }
 
     function move() {
-      button.style.marginLeft = 0;
-      button.style.display = 'relative';
+      
       if (rngText == 1) {
         header.textContent = "lol get trolled";
       } else if (rngText == 2) {
@@ -54,6 +53,8 @@
 
       audio.pause;
       audio.currentTime = 0;
+      button.style.marginLeft = 0;
+      button.style.display = 'relative';
       root.style.setProperty('--top', Math.floor(Math.random() * (100 - 1) + 1)  + "%");
       console.log('top changed');
       root.style.setProperty('--left',  Math.floor(Math.random() * (100 - 1) + 1) + "%");
