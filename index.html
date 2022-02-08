@@ -16,7 +16,10 @@
     let button = document.getElementById('button');
     let header = document.getElementById('bobux');
     var rngText = 0;
+    let root = document.querySelector(':root');
+
     function start() {
+      button.style.position = 'absolute';
       startButton.classList.add('hidden');
       setTimeout(function(){
         button.classList.remove('hidden');
@@ -25,6 +28,8 @@
     }
 
     function move() {
+      button.style.marginLeft = 0;
+      button.style.display = 'relative';
       if (rngText == 1) {
         header.textContent = "lol get trolled";
       } else if (rngText == 2) {
@@ -34,10 +39,7 @@
       } else if (rngText == 4) {
         header.textContent = "Imagine playing Roblox tho"
       } else {
-        header.textContent = "Amogus"
-        document.body.classList.add('amogus')
-        header.style.borderStyle = "solid";
-        button.style.display= "none";
+        amogus()
       }
 
       header.classList.remove('hidden')
@@ -52,11 +54,20 @@
 
       audio.pause;
       audio.currentTime = 0;
-      button.style.top = Math.floor(Math.random() * (100 - 1) + 1) + "vh";
-      button.style.left = Math.floor(Math.random() * (100 - 1) + 1) + "vw";
+      root.style.setProperty('--top', Math.floor(Math.random() * (100 - 1) + 1)  + "%");
+      console.log('top changed');
+      root.style.setProperty('--left',  Math.floor(Math.random() * (100 - 1) + 1) + "%");
+      console.log('left changed');
       audio.play();
     }
 
+    function amogus() {
+      header.textContent = "Amogus"
+        document.body.classList.add('amogus')
+        header.style.borderStyle = "solid";
+        button.style.display= "none";
+
+    }
 
   </script>
 </body>
