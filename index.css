@@ -37,3 +37,12 @@
   background-image: url(amogus.png);
   background-repeat: repeat;
 }
+
+#video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 16/9;
+  opacity: 0;
+}
