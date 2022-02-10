@@ -10,6 +10,8 @@
   <button id="startButton" onmousedown="start()"> Press to Continue</button>
   <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><button id="button" class="hidden" onmouseover="move()">Click for free bobux</button></a>
   <h1 id="bobux" class="hidden" ></h1>
+  <video src="amogus.mp4" id="video" class="hidden" ></video>
+
   <script>
     const audio = new Audio('bruh.mp3');
     let startButton = document.getElementById('startButton');
@@ -17,6 +19,8 @@
     let header = document.getElementById('bobux');
     var rngText = 0;
     let root = document.querySelector(':root');
+    let video = document.getElementById('video');
+
 
     function start() {
       button.style.position = 'absolute';
@@ -28,7 +32,6 @@
     }
 
     function move() {
-      
       if (rngText == 1) {
         header.textContent = "lol get trolled";
       } else if (rngText == 2) {
@@ -44,31 +47,54 @@
       header.classList.remove('hidden')
 
       setTimeout(function(){
-        header.classList.add('hidden');
-        rngText = Math.floor(Math.random() * (6-1) + 1);
+        header.classList.add('hidden')
         document.body.classList.remove('amogus')
         header.style.borderStyle = "none";
-        button.style.display = "block";
+        if (!(rngText == 5)){
+          button.classList.remove('hidden')
+        }
+        rngText = Math.floor(Math.random() * (6-1) + 1);
+        
         header.style.backgroundColor = "transparent";
       },500);
 
       audio.pause;
       audio.currentTime = 0;
       button.style.marginLeft = 0;
-      button.style.display = 'relative';
       root.style.setProperty('--top', Math.floor(Math.random() * (100 - 1) + 1)  + "%");
-      console.log('top changed');
       root.style.setProperty('--left',  Math.floor(Math.random() * (100 - 1) + 1) + "%");
-      console.log('left changed');
+
+      setTimeout(function(){
+        
+      },20);
+
       audio.play();
     }
 
     function amogus() {
+      button.classList.add('hidden');
+      video.classList.remove('hidden');
+      if (!(video.currentTime > 0)) {
+        video.pause();
+      video.currentTime = 0;
+      }
+      video.play();
       header.textContent = "Amogus"
       document.body.classList.add('amogus')
-      header.style.borderStyle = "solid";
-      button.style.display= "none";
       header.style.backgroundColor = "rgb(255,255,255)";
+
+      video.addEventListener('ended', function(){
+        video.classList.add('hidden');
+        button.classList.remove('hidden');
+        video.style.opacity = 0;
+      });
+
+      setTimeout(function(){
+
+        video.style.opacity = "100%";
+      },2400);
+
+
     }
 
   </script>
