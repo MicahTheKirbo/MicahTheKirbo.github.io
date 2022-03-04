@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="keywords" content="3x+1 solver, Micah Jayasinghe, 7I, math" >
+    <meta name="title" content="Micah's 3x + 1 solver">
+    <meta name="description" content="a quick website I made for math homework about trying to solve the 3x + 1 equation.">
+    <meta charset="UTF-8">
+
+    <style type="text/css">
+
+    </style>
+  </head>
+
+  <body>
+    <form onsubmit="return false;">
+      <label for="startingNumber">What number do you want to start the calculations on? </label><br>
+    <input type="number" id="startNumber" placeholder="starting number" style="width: 200px;" required></input> <br><br>
+    <label for="speed">What speed would you like the calculations to display?</label><br>
+    <input type="number" id="speed" placeholder="speed (1000 = 1s per equation)" style="width: 200px;"  required><br><br>
+
+      <input type="submit"  onclick="calculate()"></input>
+      <div style="font-size: 22px;" id="steps"></div><br><br>
+    </form>
+
+    <div id="result" style=" padding: 2px;"> </div> 
+    <footer style="position: absolute; top: 100%; bottom: 0;">Joe biden</footer> 
+    
+    
+
+    <script type="text/javascript"> 
+    var speed;
+    var startNum;
+    var currentNum;
+    var currentStr;
+    var state;
+    var lastNum;
+    var stepsNum = 0;
+    const steps = document.getElementById('steps');
+
+    const result = document.getElementById('result');
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    async function calculate(){
+      speed = document.getElementById('speed').value;
+      startNum = parseInt(document.getElementById('startNumber').value, 10);
+      currentNum = document.getElementById('startNumber').value;
+      currentNum2 = parseInt(document.getElementById('startNumber').value, 10);
+      state = true;
+      stepsNum = 0;
+      
+
+      if (speed >= -1 && startNum > 0) {
+        do {
+          currentStr = currentNum + ' => ';
+          do {
+            if(currentNum%2 == 0) {
+              currentNum = currentNum / 2;
+              currentStr = currentStr + currentNum + " => ";
+            } else{
+              currentNum = currentNum * 3 + 1;
+              currentStr = currentStr + currentNum + " => ";
+            }
+            stepsNum += 1
+          } while (!(currentNum == 1))
+          result.innerText = currentStr + "loops...";
+          steps.innerText = stepsNum + " steps";
+          stepsNum = 0;
+          lastNum = currentNum;
+          currentNum = currentNum2 + 1;
+          currentNum2 += 1;
+          await sleep(speed);
+
+        } while (state == true);
+           
+      } else if (!(speed.length == 0 || startNum.length == 0)) {
+        alert('The values have to be positive numbers!');
+      }
+      
+    }
+    </script>
+  </body>
+</html>  
