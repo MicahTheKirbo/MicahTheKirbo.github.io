@@ -7,18 +7,21 @@
     <meta charset="UTF-8">
 
     <style type="text/css">
-
+      .hidden{
+        display: none;
+      }
     </style>
   </head>
 
   <body>
-    <form onsubmit="return false;">
+    <form onsubmit="return false;" id="form">
       <label for="startingNumber">What number do you want to start the calculations on? </label><br>
     <input type="number" id="startNumber" placeholder="starting number" style="width: 200px;" required></input> <br><br>
     <label for="speed">What speed would you like the calculations to display?</label><br>
     <input type="number" id="speed" placeholder="speed (1000 = 1s per equation)" style="width: 200px;"  required><br><br>
 
-      <input type="submit"  onclick="calculate()"></input>
+      <input type="submit" id="submit" onclick="calculate()"></input>
+      <button onclick="stopCalc()" id="stop" class="hidden">Stop</button>
       <div style="font-size: 22px;" id="steps"></div><br><br>
     </form>
 
@@ -36,31 +39,37 @@
     var lastNum;
     var stepsNum = 0;
     const steps = document.getElementById('steps');
-
-    const result = document.getElementById('result');
+    const submit = document.getElementById('submit');
+    const stopButton = document.getElementById('stop');
     const sleep = ms => new Promise(r => setTimeout(r, ms));
+    const result = document.getElementById('result');
+    
 
     async function calculate(){
       speed = document.getElementById('speed').value;
-      startNum = parseInt(document.getElementById('startNumber').value, 10);
+      startNum = Number(document.getElementById('startNumber').value, 10);
       currentNum = document.getElementById('startNumber').value;
-      currentNum2 = parseInt(document.getElementById('startNumber').value, 10);
+      currentNum2 = Number(document.getElementById('startNumber').value, 10);
+      console.log(startNum);
+ 
       state = true;
       stepsNum = 0;
+      stopButton.classList.remove('hidden');
+      submit.classList.add('hidden');
       
 
       if (speed >= -1 && startNum > 0) {
         do {
-          currentStr = currentNum + ' => ';
+          currentStr = '';
           do {
             if(currentNum%2 == 0) {
+              currentStr = currentStr + currentNum  + ", " + currentNum + "/2 => ";
               currentNum = currentNum / 2;
-              currentStr = currentStr + currentNum + " => ";
             } else{
+              currentStr = currentStr + currentNum + ", " + currentNum + "*3 + 1 => ";
               currentNum = currentNum * 3 + 1;
-              currentStr = currentStr + currentNum + " => ";
             }
-            stepsNum += 1
+            stepsNum += 1;
           } while (!(currentNum == 1))
           result.innerText = currentStr + "loops...";
           steps.innerText = stepsNum + " steps";
@@ -68,13 +77,27 @@
           lastNum = currentNum;
           currentNum = currentNum2 + 1;
           currentNum2 += 1;
+          
+          
           await sleep(speed);
+
+          if (state == false) {
+            return;
+          }
 
         } while (state == true);
            
       } else if (!(speed.length == 0 || startNum.length == 0)) {
         alert('The values have to be positive numbers!');
       }
+      
+    }
+
+    function stopCalc(){
+      state = false;
+      document.getElementById('form').reset();
+      stopButton.classList.add("hidden");
+      submit.classList.remove('hidden');
       
     }
     </script>
