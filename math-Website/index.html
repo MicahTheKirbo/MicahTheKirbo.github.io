@@ -5,11 +5,13 @@
     <meta name="title" content="Micah's 3x + 1 solver">
     <meta name="description" content="a quick website I made for math homework about trying to solve the 3x + 1 equation.">
     <meta charset="UTF-8">
+   
 
     <style type="text/css">
       .hidden{
         display: none;
       }
+
     </style>
   </head>
 
@@ -17,90 +19,24 @@
     <form onsubmit="return false;" id="form">
       <label for="startingNumber">What number do you want to start the calculations on? </label><br>
     <input type="number" id="startNumber" placeholder="starting number" style="width: 200px;" required></input> <br><br>
-    <label for="speed">What speed would you like the calculations to display?</label><br>
-    <input type="number" id="speed" placeholder="speed (1000 = 1s per equation)" style="width: 200px;"  required><br><br>
+    <label for="speed">What speed would you like the calculations to display? (Blank = 0) </label><br>
+    <input type="number" id="speed" placeholder="speed (1000 = 1s per equation)" style="width: 200px;"  ><br><br>
+    <label>
+      Do you want to record the results? <br>
+      <input type="radio" name="write" id="writeYes" required> &nbsp;
+      <input type="radio" name="write" id="writeNo"><br>
+      <label for="writeYes">Yes</label> &nbsp;
+      <label for="writeNo">No</label>
+    </label><br><br>
 
       <input type="submit" id="submit" onclick="calculate()"></input>
       <button onclick="stopCalc()" id="stop" class="hidden">Stop</button>
       <div style="font-size: 22px;" id="steps"></div><br><br>
     </form>
 
-    <div id="result" style=" padding: 2px;"> </div> 
+    <div id="result" style=" padding: 2px; background-color: white;"> </div> 
   
-    
-    
-
-    <script type="text/javascript"> 
-    var speed;
-    var startNum;
-    var currentNum;
-    var currentStr;
-    var state;
-    var lastNum;
-    var stepsNum = 0;
-    const steps = document.getElementById('steps');
-    const submit = document.getElementById('submit');
-    const stopButton = document.getElementById('stop');
-    const sleep = ms => new Promise(r => setTimeout(r, ms));
-    const result = document.getElementById('result');
-    
-
-    async function calculate(){
-      speed = document.getElementById('speed').value;
-      startNum = Number(document.getElementById('startNumber').value, 10);
-      currentNum = document.getElementById('startNumber').value;
-      currentNum2 = Number(document.getElementById('startNumber').value, 10);
-      console.log(startNum);
- 
-      state = true;
-      stepsNum = 0;
-      stopButton.classList.remove('hidden');
-      submit.classList.add('hidden');
-      
-
-      if (speed >= -1 && startNum > 0) {
-        do {
-          currentStr = '';
-          do {
-            if(currentNum%2 == 0) {
-              currentStr = currentStr + currentNum  + ", " + currentNum + "/2 => ";
-              currentNum = currentNum / 2;
-            } else{
-              currentStr = currentStr + currentNum + ", " + currentNum + "*3 + 1 => ";
-              currentNum = currentNum * 3 + 1;
-            }
-            stepsNum += 1;
-          } while (!(currentNum == 1))
-          result.innerText = currentStr + "loops...";
-          steps.innerText = stepsNum + " steps";
-          stepsNum = 0;
-          lastNum = currentNum;
-          currentNum = currentNum2 + 1;
-          currentNum2 += 1;
-          
-          
-          await sleep(speed);
-
-          if (state == false) {
-            return;
-          }
-
-        } while (state == true);
-           
-      } else if (!(speed.length == 0 || startNum.length == 0)) {
-        alert('The values have to be positive numbers!');
-      }
-      
-    }
-
-    function stopCalc(){
-      state = false;
-      document.getElementById('form').reset();
-      stopButton.classList.add("hidden");
-      submit.classList.remove('hidden');
-      
-    }
-    </script>
+    <script type="text/javascript" src="app.js"> </script>
   </body>
-  <footer style="position: fixed;  bottom: 0; font-size: 20px;">Copyright Micah Jayasinghe: 03/04/2022</footer> 
+  <footer style="position: fixed;  bottom: 0; font-size: 20px; z-index: -1;">Copyright Micah Jayasinghe <span style="font-size: 12px;"> Newest Update: Fixed Decimal Bug</span></footer> 
 </html>  
