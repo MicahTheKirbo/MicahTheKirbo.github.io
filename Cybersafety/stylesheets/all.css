@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&family=Roboto:wght@300&family=Source+Sans+Pro&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+header{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 10px;
+  background-color: rgba(0, 0, 0, 0.378);
+  position: relative;
+  width: 100%;
+}
+
+body{
+  color: white;
+}
+
+#navList{
+  height:calc(1.3rem + 2px);
+}
+
+a{
+  display: inline-block;
+  text-decoration: none;
+  text-decoration-color: white;
+  transition: all 0.2s;
+}
+
+#navList li{
+  display: inline;
+  margin-right: 1.1em;
+  transition: all 0.2s;
+}
+
+.page{
+  border-bottom: white solid 1px;
+}
+
+.page:hover{
+  cursor: pointer;
+}
+
+
+#navList li a .text{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: calc(0.8rem + 0.25vw);
+  color: white;
+  transition: all 0.2s;
+}
+
+#navList li:hover > a > .text{
+  color: rgb(0, 217, 255);
+  font-size: calc(1rem + 0.25vw + 2px);
+}
+
+#navList li:hover{
+  background-color: rgba(0, 0, 0, 0.063);
+  border-bottom-color: rgb(0,217,255);
+}
+
+#navList li:hover .icon{
+  width: calc(1rem + 0.17vw + 2px);
+  filter: invert(71%) sepia(16%) saturate(6747%) hue-rotate(145deg) brightness(101%) contrast(103%);
+}
+
+
+
+#socialLinks{
+  display: flex;
+  margin-right:auto;
+  height: 38px;
+  align-items: center;
+}
+
+#socialLinks li{
+  display:inline;
+  margin-right: 10px;
+}
+
+#socialLinks img{
+  aspect-ratio: 1/1;
+  width: calc(1rem + 0.833vw);
+  transition: all 200ms ease;
+}
+
+#socialLinks img:hover{
+  width: calc(1rem + 0.833vw + 0.364vw);
+}
+
+#email{
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(67deg) brightness(108%) contrast(101%);
+}
+
+footer{
+  position:fixed;
+  bottom:0;
+  z-index: -1;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-family: 'Roboto', sans-serif;
+  padding: 2px;
+}
+
+.icon{
+  text-decoration: none;
+  aspect-ratio: 1/1;
+  width: calc(1rem + 0.17vw);
+  color: white;
+  margin: 0;
+  margin-bottom: -2px;
+  padding: 0;
+  position: relative;
+  bottom: 0;
+  top: 0;
+  transition: all 0.2s;
+  filter: invert(100%) sepia(93%) saturate(46%) hue-rotate(150deg) brightness(106%) contrast(108%);
+}
+
+
+::-webkit-scrollbar{
+  width: 1.3em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(179, 179, 179);
+  transition: all 1s ease;
+  border-radius: 100vw;
+  border: .125em solid white
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background: rgb(120, 120, 120);
+}
+/*extra goals
+  asethetic
+
+  for tomorrow:
+  add responsive to every page
+*/
+

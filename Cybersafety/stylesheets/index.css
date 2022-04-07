@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&family=Montserrat:wght@500&family=Source+Sans+Pro&family=Ubuntu:wght@300&display=swap'); /* paragraph font*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+body{
+  background-image: url("../svgs/background.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.container1, .container1Title {
+  width: 52.083vw;
+  min-width: 500px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 100px;
+}
+
+.container1{
+  display: flex;
+  border-radius: 10%;
+  height: 31.25vw;
+  min-height: 300px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 10px 20px;
+  line-height: 2em;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5625vw;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#container2{
+  height: auto;
+  padding: 30px;
+}
+
+
+.container1Title{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.083vw;
+}
+
+
+.break{
+  flex-basis: 100%;
+  width: 0;
+}
+
+#keepingSafeButton{
+  /*overflow:hidden;*/
+  width: 15.625vw;
+  height: 5.208vw;
+  border-radius: 1.302vw;
+  font-size:1.666vw;
+  letter-spacing: calc(1.5px / 19.2);
+  transition: ease-out 0.3s;
+  position: relative;
+  color: white;
+  outline: none;
+  border: 0.156vw solid #fff;
+  background: linear-gradient( 90deg,rgb(0, 92, 221),rgb(116, 11, 191) );
+  z-index: 1;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.3s ease;
+}
+
+#keepingSafeButton:hover{
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1.07) rotate(1deg);
+  font-size: 1.2em;
+  background: linear-gradient( 90deg,rgb(0, 82, 197),rgb(98, 9, 161) );
+  box-shadow: 0 0 0.26vw rgba(255, 255,255,0.5),
+   0 0 1.041vw rgba(255, 255,255,0.5), 
+   0 0 3.125vw rgba(255, 255,255,0.5),
+   0 0 4.166vw rgba(255,255,255,0.5);
+}
+
+@media only screen and (max-width: 900px) {
+  .container1{
+    font-size: 15px;
+  }
+  .container1Title{
+    font-size: 20px;
+  }
+
+  #keepingSafeButton{
+    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    border-radius: 12.5px;
+    border-width: 1.5px;
+
+  }
+
+  #keepingSafeButton:hover{
+    box-shadow: 0 0 2.5px rgba(255, 255,255,0.5), 0 0 10px rgba(255, 255,255,0.5), 0 0 30px rgba(255, 255,255,0.5);
+  }
+}
+
+::-webkit-scrollbar-track{
+  background: linear-gradient(#7b00ff, #2b06ff);
+}

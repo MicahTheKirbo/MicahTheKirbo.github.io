@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dangers of the Internet- Cybersafety</title>
+  <link rel="shortcut icon" type="text/image" href="../favicon.png">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/all.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/the-dangers.css">
+  <script src="https://kit.fontawesome.com/31e15e5003.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <ul id="socialLinks">
+      <li class="social"><a href="https://www.youtube.com/channel/UCbBZxTP47mDX0cICIJ6F2rQ" target="_blank"><img src="../svgs/youtube.svg"></a></li>
+      <li class="social"><a href="https://discord.gg/zt7eUpMNbj" target="_blank"><img src="../svgs/discord.svg"></a></li>
+      <li class="social"><a href="mailto:micah.jayasinghe@gmail.com" target="_blank"><img src="../svgs/email.svg" id="email"></a></li>
+    </ul>
+    <nav id="navBar">
+      <ul id="navList">
+        <li><a href="index.html">
+          <span class="text">Home</span>
+          <img src="../svgs/home.svg"class="icon">
+        </a></li>
+        <li class="page"><a>
+          <span class="text">The Dangers</span>
+          <img class="icon" src="../svgs/danger.svg">
+        </a></li>
+        <li><a href="the-A-Z.html">
+          <span class="text">The A-Z</span>
+          <img class="icon" src="../svgs/alphabet.svg">
+        </a></li>
+        <li><a href="keeping-safe.html">
+          <span class="text">Keeping Safe</span>
+          <img class="icon" src="../svgs/keeping-safe.svg">
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 id="container1Title">The Dangers of the Internet</h1>
+  <div id="container1">
+    <br>
+    <p>While the Internet and social media has various advantages that are used in everyday life, it also has many harmful content that you need to avoid.</p>
+    <br>
+    <h3>1.  PRIVACY</h3>
+    <br>
+    <img src="../images/cookies.png">
+    <p>On the internet, thousands of cookies track what we are doing, gathering information about us just from our searches. Clicking on suspicious websites could result with hundreds and even thousands of trackers latching onto us, giving us no privacy. We're always leaving traces of our life on the internet, which is then sold to marketing companies, so they can have an insight of our life.</p>
+    <br>
+    <br>
+    <h3>2. ONLINE CRIME</h3>
+    <br>
+    <p>Over the years, the crime rate for most countries have been slowly decreasing, however, online crimes have been exponentially growing. These crimes include Email and internet fraud, Identity fraud, Theft of financial or card payment data, Ransomware attacks and much more. While these crimes take play over the internet, they are still as deadly as real life crimes. It is estimated that Cyber Bank robberies now contribute <b>$1 trillion</b>  in Cybercrime Losses. Now with the Internet, un the 1990's, the NSPCC estimated that there were around 7,000 known images of child pornography, and sadly, that number is growing.</p>
+    <img src="../images/online-crime.jpg">
+    <br><br><br>
+    <h3>3. MALWARE</h3>
+    <br>
+    <img  src="../images/malware.jpeg">
+    <p>You probably know that more than 90% of all your applications are downloaded from the internet. And while this feature alone makes up more than 60% of what most people use a computer for, we need to be careful about what we download.
+      Like everything on the internet, not everything is safe. Files from sketpical owners could destroy/hold data for ransom. Malware could corrupt your machine, making you lose thousands of dollars. We have to be careful about what we trust on the internet to ensure that our personal data stays safe and secure.
+
+    </p>
+    <br><br><br>
+    <div id="buttonContainer">
+      <a href="keeping-safe.html"><button id="button1" class="button"  onmouseenter="capital1()" onmouseleave="lowercase1()">How to Keep Safe</button></a>
+      <a href="the-A-Z.html"><button id="button2"  class="button" onmouseenter="capital2()" onmouseleave="lowercase2()">Learn More</button></a>
+    </div>
+    
+  </div>
+  
+  <footer>Copyright &copy;Micah J 2022</footer>
+
+  <script type="text/javascript">
+    const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
+    const button = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    let string;
+    let string2 = "How to Keep Safe";
+    let array1;
+    let array2; 
+
+    var lowStr;
+    var uppStr;
+    
+
+    async function capital1() {
+      
+      status = true;
+      string = button.textContent;
+      string2 = "How to Keep Safe"
+      array1 = string.split('');
+      array2 = string2.split('');
+      button.textContent = '';
+      
+      for (let i=0; i<array1.length; i++){
+        if (status == false){
+          status = true;
+          return;
+        }
+
+         lowStr = '';
+        array2.splice(0, 1);
+        lowStr = array2.toString().replace(/,/g,'');
+        uppStr = '';
+
+        for (j = 0; j <= i; j++){
+          uppStr = uppStr + array1[j].toUpperCase();
+        }
+        
+        button.textContent = uppStr + lowStr;
+
+        await sleep(20);
+      }
+
+        
+    }
+
+     function lowercase1(){
+      status = false;
+      button.textContent = "How to Keep Safe";
+    }
+
+    async function capital2() {
+      
+      status = true;
+      string = button2.textContent;
+      string2 = "Learn More"
+      array1 = string.split('');
+      array2 = string2.split('');
+      button2.textContent = '';
+      
+      for (let i=0; i<array1.length; i++){
+        if (status == false){
+          status = true;
+          return;
+        }
+
+         lowStr = '';
+        array2.splice(0, 1);
+        lowStr = array2.toString().replace(/,/g,'');
+        uppStr = '';
+
+        for (j = 0; j <= i; j++){
+          uppStr = uppStr + array1[j].toUpperCase();
+        }
+        
+        button2.textContent = uppStr + lowStr;
+
+        await sleep(20);
+      }
+
+        
+    }
+
+    function lowercase2(){
+      status = false;
+      button2.textContent = "Learn More";
+    }
+  </script>
+</body>
+</html>
