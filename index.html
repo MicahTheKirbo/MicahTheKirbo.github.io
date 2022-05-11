@@ -1,103 +1,22 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VHAP math website</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="shortcut icon" type="text/image" href="favicon.png">
 </head>
-
 <body>
-  
-  <button id="startButton" onmousedown="start()"> Press to Continue</button>
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><button id="button" class="hidden" onmouseover="move()">Click for free bobux</button></a>
-  <h1 id="bobux" class="hidden" ></h1>
-  <video src="amogus.mp4" id="video" class="hidden" ></video>
-
-  <script>
-    const audio = new Audio('bruh.mp3');
-    let startButton = document.getElementById('startButton');
-    let button = document.getElementById('button');
-    let header = document.getElementById('bobux');
-    var rngText = 0;
-    let root = document.querySelector(':root');
-    let video = document.getElementById('video');
-
-
-    function start() {
-      button.style.position = 'absolute';
-      startButton.classList.add('hidden');
-      setTimeout(function(){
-        button.classList.remove('hidden');
-      }, 5);
-      rngText = Math.floor(Math.random() * (6-1) + 1);
-    }
-
-    function move() {
-      if (rngText == 1) {
-        header.textContent = "lol get trolled";
-      } else if (rngText == 2) {
-        header.textContent = "no bobux for you XD";
-      } else if (rngText == 3) {
-        header.textContent = "Imagine being poor";
-      } else if (rngText == 4) {
-        header.textContent = "Imagine playing Roblox tho"
-      } else {
-        amogus()
-      }
-
-      header.classList.remove('hidden')
-
-      setTimeout(function(){
-        header.classList.add('hidden')
-        document.body.classList.remove('amogus')
-        header.style.borderStyle = "none";
-        if (!(rngText == 5)){
-          button.classList.remove('hidden')
-        }
-        rngText = Math.floor(Math.random() * (6-1) + 1);
-        
-        header.style.backgroundColor = "transparent";
-      },500);
-
-      audio.pause;
-      audio.currentTime = 0;
-      button.style.marginLeft = 0;
-      root.style.setProperty('--top', Math.floor(Math.random() * (100 - 1) + 1)  + "%");
-      root.style.setProperty('--left',  Math.floor(Math.random() * (100 - 1) + 1) + "%");
-
-      setTimeout(function(){
-        
-      },20);
-
-      audio.play();
-    }
-
-    function amogus() {
-      button.classList.add('hidden');
-      video.classList.remove('hidden');
-      if (!(video.currentTime > 0)) {
-        video.pause();
-      video.currentTime = 0;
-      }
-      video.play();
-      header.textContent = "Amogus"
-      document.body.classList.add('amogus')
-      header.style.backgroundColor = "rgb(255,255,255)";
-
-      video.addEventListener('ended', function(){
-        video.classList.add('hidden');
-        button.classList.remove('hidden');
-        video.style.opacity = 0;
-      });
-
-      setTimeout(function(){
-
-        video.style.opacity = "100%";
-      },2400);
-
-
-    }
-
-  </script>
+    <form onsubmit=" calculate(); reset(); return false;">
+        <label for="number">Starting Number (3 digit)</label><br>
+        <input id="number" type="number" required maxlength="3" min="100">
+        <br><br>
+        <input type="submit" id="submit">
+    </form>
+    <br>
+    <div id="result"></div>
+    <script src="app.js"></script>
 </body>
-
 </html>
