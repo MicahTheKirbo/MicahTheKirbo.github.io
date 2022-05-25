@@ -49,7 +49,7 @@ function calculate() {
         div.textContent = susString;
     }
         else {
-        div.textContent = "Sorry, criminal case is invalid.";
+        div.textContent = "No one is the criminal.";
     }
     
     
