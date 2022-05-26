@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="index.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <button id="startButton" onmousedown="start()"> Press to Continue</button>
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"><button id="button" class="hidden" onmouseover="move()">Click for free bobux</button></a>
+  <h1 id="bobux" class="hidden" ></h1>
+  <video src="amogus.mp4" id="video" class="hidden" ></video>
+
+  <video src="amogus.mp4"  class="video2 hidden" id="amogus1" ></video>
+  <video src="amogus.mp4"  class="video2 hidden" id="amogus2" ></video>
+  <video src="amogus.mp4"  class="video2 hidden" id="amogus3" ></video>
+  <video src="amogus.mp4"  class="video2 hidden" id="amogus4" ></video> 
+
+  <script>
+
+    const audio = new Audio('bruh.mp3');
+    let startButton = document.getElementById('startButton');
+    let button = document.getElementById('button');
+    let header = document.getElementById('bobux');
+    var rngText = 0;
+    let root = document.querySelector(':root');
+    let video = document.getElementById('video');
+    var video2 = [document.getElementById('amogus1'),document.getElementById('amogus2'),document.getElementById('amogus3'),document.getElementById('amogus4')]
+    function start() {
+      button.style.position = 'absolute';
+      startButton.classList.add('hidden');
+      setTimeout(function(){
+        button.classList.remove('hidden');
+      }, 5);
+      rngText = Math.floor(Math.random() * (6-1) + 1);
+    }
+
+    function move() {
+      if (rngText == 1) {
+        header.textContent = "lol get trolled";
+      } else if (rngText == 2) {
+        header.textContent = "no bobux for you XD";
+      } else if (rngText == 3) {
+        header.textContent = "Imagine being poor";
+      } else if (rngText == 4) {
+        header.textContent = "Imagine playing Roblox tho"
+      } else {
+        amogus()
+      }
+
+      header.classList.remove('hidden')
+
+      setTimeout(function(){
+        header.classList.add('hidden')
+        document.body.classList.remove('amogus')
+        header.style.borderStyle = "none";
+        if (!(rngText == 5)){
+          button.classList.remove('hidden')
+        }
+        rngText = Math.floor(Math.random() * (6-1) + 1);
+        
+        header.style.backgroundColor = "transparent";
+      },500);
+
+      audio.pause;
+      audio.currentTime = 0;
+      button.style.marginLeft = 0;
+      root.style.setProperty('--top', Math.floor(Math.random() * (100 - 7) + 7)  + "%");
+      root.style.setProperty('--left',  Math.floor(Math.random() * (100 - 7) + 7) + "%");
+
+      setTimeout(function(){
+        
+      },20);
+
+      audio.play();
+    }
+
+    function amogus() {
+      
+      button.classList.add('hidden');
+      video.classList.remove('hidden');
+
+      video.pause();
+      video.currentTime = 0;
+      video.play();
+
+      for (let i = 0; i < video2.length; i++) {
+        video2[i].pause();
+        video2[i].currentTime = 0;
+        video2[i].classList.remove('hidden');
+        video2[i].style.opacity = "100%";
+        video2[i].play();
+        setTimeout(function(){
+          video2[i].style.opacity = 0;
+        },2300);
+      }
+      
+      header.textContent = "Amogus"
+      document.body.classList.add('amogus')
+      header.style.backgroundColor = "rgb(0,0,150)";
+      video.addEventListener('ended', function(){
+        video.classList.add('hidden');
+        button.classList.remove('hidden');
+        video.style.opacity = 0;
+       
+        
+      });
+
+      setTimeout(function(){
+
+        video.style.opacity = "100%";
+
+      },2300);
+
+
+    }
+
+  </script>
+</body>
+
+</html>
