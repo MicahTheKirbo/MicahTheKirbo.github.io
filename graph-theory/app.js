@@ -11,26 +11,36 @@ function calculate() {
     let iterations = 0;
     let suspects =[];
     let susString = "";
+    let items = document.getElementsByClassName('item');
+    for (let i = 0; i < items.length; i++) {
+        items[i].classList.add('hidden');
+    }
 
-    const div = document.getElementById('container');
+    let div = document.getElementById('container');
 
     for (let j = 0; j < values.length; j++) {
-        if (values[j] == "not-me") { //fix it so when it is not me, all the values except for the selected one change by 1. Also I need to mutate the original array.
+        if (values[j] == "not-me") { 
             numArr.forEach((val, i) => {
-                if (i !== j) numArr[i] += 1;
+                if (i !== j){
+                    numArr[i] += 1;
+                    document.getElementById(j.toString() + i.toString()).classList.remove('hidden');
+                } 
+              
               });
         } else {
-            numArr[values[j]] += 1
+
+            numArr[values[j]] += 1;
+            document.getElementById(j+values[j]).classList.remove('hidden');
         }
         
     }
         
+
     for (let k = 0; k <values.length; k++) {
         if (numArr[k] == truths) {
             suspects.push(colors[k]);
         }
     }
-    console.log(suspects);
 
     for (let l = 0; l < suspects.length; l++) {
         if (l == suspects.length - 1) {
@@ -49,7 +59,7 @@ function calculate() {
         div.textContent = susString;
     }
         else {
-        div.textContent = "No one is the criminal.";
+        div.textContent = "Invalid Case: no criminal";
     }
     
     
